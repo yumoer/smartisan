@@ -327,119 +327,199 @@
 			}
 		})
 	};
-    w.Jason.vMove=function(wrap){
-        /*带橡皮筋快速滑屏效果的导航*/
-     /*   //滑屏区域
-        var wrap = document.querySelector(".Jason-dragNav");
-        //滑屏元素
-        var item = document.querySelector(".Jason-dragNav .list");*/
-        var item =  wrap.children[0];
-        //元素一开始的位置  手指一开始的位置
-        var startY=0;
-        var elementY =0;
-        var minY = wrap.clientHeight - item.offsetHeight;
-//快速滑屏的必要参数
-        var lastTime =0;
-        var lastPoint =0;
-        var timeDis =1 ;
-        var pointDis =0;
-        var isY = true;
-        var isFirst = true;
-        var startX = 0;
-        wrap.addEventListener("touchstart",function(ev){
-            ev=ev||event;
-            var touchC = ev.changedTouches[0];
-            startX = touchC.clientX;
-            startY = touchC.clientY;
-            elementY = Jason.css(item,"translateY");
-            item.style.transition="none";
-            lastTime = new Date().getTime();
-            lastPoint = touchC.clientY;
-            //lastPoint = Jason.css(item,"translateY");
-            //清除速度的残留
-            pointDis=0;
-            item.handMove = false;
-            isY = true;
-            isFirst = true;
-        });
-        wrap.addEventListener("touchmove",function(ev){
-            if(!isY){
-                return;
-            }
-            ev=ev||event;
-            var touchC = ev.changedTouches[0];
-            var nowX = touchC.clientX;
-            var disX = nowX - startX;
-            var nowY = touchC.clientY;
-            var disY = nowY - startY;
-            var translateY = elementY+disY;
-            if(isFirst){
-                isFirst = false;
-                if(Math.abs(disX)>Math.abs(disY)){
-                    isY = false;
-                    return
-                }
-            }
-            var nowTime =new Date().getTime();
-            var nowPoint = touchC.clientY;
-            timeDis = nowTime - lastTime;
-            pointDis = nowPoint - lastPoint;
-            lastTime = nowTime;
-            lastPoint = nowPoint;
-            /*手动橡皮筋效果
-             *
-             * 在move的过程中，每一次手指touchmove真正的有效距离慢慢变小，元素的滑动距离还是在变大
-             *
-             * pointDis：整个手指touchmove真正的有效距
-             *
-             * translateY = Jason.css(item,"translateY") + pointDis*scale;!!!
-             *
-             * */
-            if(translateY>0){
-                item.handMove = true;
-                var scale = document.documentElement.clientHeight/((document.documentElement.clientHeight+translateY)*1.5);
-                translateY = Jason.css(item,"translateY") + pointDis*scale;
-            }else if(translateY<minY){
-                item.handMove = true;
-                var over = minY - translateY;
-                var scale = document.documentElement.clientHeight/((document.documentElement.clientHeight+over)*1.5);
-                translateY = Jason.css(item,"translateY") + pointDis*scale;
-            }
-            Jason.css(item,"translateY",translateY);
-        })
-        wrap.addEventListener("touchend",function(ev){
-            var translateY = Jason.css(item,"translateY");
-            if(!item.handMove){
-                //快速滑屏
-                //速度越大  位移越远
-                var speed = pointDis/timeDis;
-                speed = Math.abs(speed)<0.5?0:speed;
-                var targetY = translateY + speed*200;
-                var time = Math.abs(speed)*0.2;
-                time = time<0.8?0.8:time;
-                time = time>2?2:time;
-                //快速滑屏的橡皮筋效果
-                var bsr="";
-                if(targetY>0){
-                    targetY=0;
-                    bsr = "cubic-bezier(.26,1.51,.68,1.54)";
-                }else if(targetY<minY){
-                    targetY = minY;
-                    bsr = "cubic-bezier(.26,1.51,.68,1.54)";
-                }
-                item.style.transition=time+"s "+bsr+" transform";
-                Jason.css(item,"translateY",targetY);
-            }else{
-                //手动橡皮筋效果
+    w.Jason.vMove=function(wrap,callBack){
+		//滑屏区域
+		//滑屏元素
+		var item = wrap.children[0];
+		damu.css(item,"translateZ",0.1);
+		
+		//元素一开始的位置  手指一开始的位置
+		var start={};
+		var element ={};
+		var minY = wrap.clientHeight - item.offsetHeight;
+		//快速滑屏的必要参数
+		var lastTime =0;
+		var lastPoint =0;
+		var timeDis =1 ;
+		var pointDis =0;
+		
+		var isY =true;
+		var isFirst = true;
+		
+		//即点即停
+		var animationTimer =0;
+		var Tween = {
+			Linear: function(t,b,c,d){ return c*t/d + b; },
+			back: function(t,b,c,d,s){
+	            if (s == undefined) s = 1.70158;
+	            return c*((t=t/d-1)*t*((s+1)*t + s) + 1) + b;
+        	}
+		}
+		wrap.addEventListener("touchstart",function(ev){
+			ev=ev||event;
+			var touchC = ev.changedTouches[0];
+			
+			start = {clientX:touchC.clientX,clientY:touchC.clientY};
+			element.y = damu.css(item,"translateY");
+			element.x= damu.css(item,"translateX");
+			
+			item.style.transition="none";
+			
+			lastTime = new Date().getTime();
+			lastPoint = touchC.clientY;
+			//lastPoint = damu.css(item,"translateY");
+			
+			//清除速度的残留
+			pointDis=0;
+			item.handMove = false;
+			
+			
+			isY =true;
+			isFirst = true;
+			
+			//即点即停
+			window.cancelAnimationFrame(animationTimer);
+			
+			
+			if(callBack&&typeof callBack["start"] === "function"){
+				callBack["start"].call(item);
+			}
+		})
+		
+		wrap.addEventListener("touchmove",function(ev){
+			if(!isY){
+				return;
+			}
+			
+			ev=ev||event;
+			var touchC = ev.changedTouches[0];
+			/*var nowY = touchC.clientY;
+			var disY = nowY - startY;
+			var translateY = elementY+disY;*/
+			var now = touchC;
+			var dis = {};
+			dis.y = now.clientY - start.clientY;
+			dis.x = now.clientX - start.clientX;
+			var translateY = element.y+dis.y;
+			
+			if(isFirst){
+				isFirst = false;
+				if(Math.abs(dis.x)>Math.abs(dis.y)){
+					isY = false;
+					return;
+				}
+			}
+			
+			
+			
+			var nowTime =new Date().getTime();
+			var nowPoint = touchC.clientY;
+			timeDis = nowTime - lastTime;
+			pointDis = nowPoint - lastPoint;
+			
+			lastTime = nowTime;
+			lastPoint = nowPoint;
+			
+			/*手动橡皮筋效果
+			 * 
+			 * 在move的过程中，每一次手指touchmove真正的有效距离慢慢变小，元素的滑动距离还是在变大
+			 * 
+			 * pointDis：整个手指touchmove真正的有效距
+			 * 
+			 * translateY = damu.css(item,"translateY") + pointDis*scale;!!!
+			 * 
+			 * */
+			if(translateY>0){
+				item.handMove = true;
+				var scale = document.documentElement.clientHeight/((document.documentElement.clientHeight+translateY)*1.5);
+				translateY = damu.css(item,"translateY") + pointDis*scale;
+			}else if(translateY<minY){
+				item.handMove = true;
+				var over = minY - translateY;
+				var scale = document.documentElement.clientHeight/((document.documentElement.clientHeight+over)*1.5);
+				translateY = damu.css(item,"translateY") + pointDis*scale;
+			}
+			damu.css(item,"translateY",translateY);
+			
+			if(callBack&&typeof callBack["move"] === "function"){
+				callBack["move"].call(item);
+			}
+		})
+		
+		wrap.addEventListener("touchend",function(ev){
+			var translateY = damu.css(item,"translateY");
+			if(!item.handMove){
+				//快速滑屏
+				//速度越大  位移越远
+				var speed = pointDis/timeDis;
+				speed = Math.abs(speed)<0.5?0:speed;
+				var targetY = translateY + speed*200;
+				var time = Math.abs(speed)*0.2;
+				time = time<0.8?0.8:time;
+				time = time>2?2:time;
+				//快速滑屏的橡皮筋效果
+				console.log(targetY,time);
+				//var bsr="";
+				var type = "Linear";
+				if(targetY>0){
+					targetY=0;
+					type = "back";
+					//bsr = "cubic-bezier(.26,1.51,.68,1.54)";
+				}else if(targetY<minY){
+					targetY = minY;
+					type = "back";
+					//bsr = "cubic-bezier(.26,1.51,.68,1.54)";
+				}
+				/*item.style.transition=time+"s "+bsr+" transform";
+				damu.css(item,"translateY",targetY);*/
+				bsr(type,targetY,time);
+			}else{
+				//手动橡皮筋效果
                 if(translateY>0){
                     translateY=0;
                 }else if(translateY<minY){
                     translateY = minY;
                 }
                 bsr("Linear",translateY,1)
+
+
+                if(callBack&&typeof callBack["handEnd"] === "function"){
+                    callBack["handEnd"].call(item);
+                }
             }
         })
-    };
+		
+		
+		function bsr(type,targetY,time){
+			//当前次数
+			var t=0;
+			//初始位置
+			var b = damu.css(item,"translateY");
+			//最终位置 - 初始位置
+			var c = targetY -b;
+			//总次数
+			var d = time*1000 / (1000/60);
+			
+			
+			function step() {
+			 	t++;
+				if(callBack&&typeof callBack["move"] === "function"){
+					callBack["move"].call(item);
+				}
+				if(t>d){
+					if(callBack&&typeof callBack["end"] === "function"){
+						callBack["end"].call(item);
+					}
+					window.cancelAnimationFrame(animationTimer);
+					return;
+				}
+				var point = Tween[type](t,b,c,d);
+				damu.css(item,"translateY",point);
+				animationTimer =window.requestAnimationFrame(step);
+			}
+			animationTimer = window.requestAnimationFrame(step);
+		}
+	}
 /*	w.Jason.remAdaptive=function (flag) {
 		/!*rem适配方案 flag为多少比例：16、10*!/
 		document.addEventListener("touchstart",function (ev) {

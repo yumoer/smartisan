@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>锤子官网</title>
+		<script src="js/mui.min.js"></script>
+		<link rel="shortcut icon" href="chuizir.png" type="image/png" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link href="css/reset.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="css/index.css" />
+		<link rel="stylesheet" type="text/css" href="css/style.css"/>
+		<script type="text/javascript" charset="utf-8">
+			mui.init();
+		</script>
+	</head>
+
+	<body>
+	<div class="mui-off-canvas-wrap mui-draggable">
+			<!-- 主页面容器 -->
+		<div class="mui-inner-wrap" >
+				<!-- 主页面标题 -->
+				<header class="mui-bar mui-bar-nav">
+					<sapn class="mui-title" style="color: white; font-weight: bold; font-size: 18px; margin-top: 0.3rem;">购物车</sapn>
+				</header>
+				<div class="mui-content mui-scroll-wrapper">
+					<div class="mui-scroll">
+						<div class="content">
+				        <img src="image/index/b.png"/>
+				    	<h3>购物车暂无商品</h3>
+				    	<p>添加到购物车的商品将会显示在这里</p>
+				    	<button type="button" class="mui-btn mui-btn-primary">登陆</button>
+				    	<button type="button" class="mui-btn">现在选购</button>
+				    </div>
+					</div>
+				</div>
+			</div>
+		</div>
+        
+		<!--mTab 底部选项卡-->
+		<nav class="mui-bar mui-bar-tab">
+			<a href="index.html" class="mui-tab-item tiaozhuan">
+				<span class="mui-icon mui-icon-home"></span>
+				<span class="mui-tab-label">首页</span>
+			</a>
+			<a href="page.html"  class="mui-tab-item tiaozhuan">
+				<span class="mui-icon mui-icon-list"></span>                                                      
+				<span class="mui-tab-label">分类</span>
+			</a>
+			<a href="shop.html"  class="mui-tab-item tiaozhuan mui-active">
+				<span class="mui-icon mui-icon-locked"></span>
+				<span class="mui-tab-label">购物车</span>
+			</a>
+			<a href="myCenter.html"  class="mui-tab-item tiaozhuan">
+				<span class="mui-icon mui-icon-contact"></span>
+				<span class="mui-tab-label">个人中心</span>
+			</a>
+		</nav>
+	</body>
+	<script type="text/javascript" src="js/Jason.js"></script>
+	<script type="text/javascript">
+		window.onload = function() {
+			document.addEventListener("touchstart", function(ev) {
+				ev = ev || event;
+				ev.preventDefault();
+			});
+			!(function() {
+				var headNode = document.querySelector("head");
+				var styleNode = document.createElement("style");
+				headNode.innerHTML += "<meta name=\"viewport\" content=\"width=device-width,initial-scale=1.0,user-scalable=no,minimum-scale=1.0,maximum-scale=1.0\" />";
+				var w = document.documentElement.offsetWidth / 16;
+				styleNode.innerHTML = "html{font-size:" + w + "px !importent;}";
+				document.head.appendChild(styleNode);
+			})()
+			tiaozhaun();
+			function tiaozhaun() {
+				var a = document.querySelectorAll(".tiaozhuan");
+				var nav = document.querySelector("nav");
+				 for(var i = 0; i<a.length; i++) {
+						a[i].addEventListener("touchend", function(ev) {
+							location.href = this.href;
+						})
+					}
+			}
+					
+		}
+	</script>
+
+</html>

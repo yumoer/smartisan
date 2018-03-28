@@ -1,0 +1,33 @@
+html {
+  background: #ededed;
+}
+.mui-scroll {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+.content {
+  width: 14.81481481rem;
+  height: 14.81481481rem;
+  text-align: center;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  top: 0;
+  margin: auto;
+}
+.content img {
+  width: 4.44444444rem;
+}
+.content button {
+  width: 5.92592593rem;
+  height: 2.22222222rem;
+  border-radius: 0.22222222rem;
+}
+.content h3 {
+  opacity: .5;
+}
+.content p {
+  opacity: .5;
+}

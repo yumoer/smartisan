@@ -1,0 +1,478 @@
+.one {
+  height: 2.6rem;
+  padding: 0.55rem .8rem;
+  position: relative;
+}
+.one:before {
+  position: absolute;
+  content: "";
+  display: block;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: rgba(0, 0, 0, 0.2);
+}
+@media (-webkit-device-pixel-ratio: 2) {
+  .one:before {
+    transform: scaleY(0.5);
+  }
+}
+@media (-webkit-device-pixel-ratio: 3) {
+  .one:before {
+    transform: scaleY(0.33333333);
+  }
+}
+.one h2 {
+  height: 2.6rem;
+  line-height: 2.6rem;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #666;
+  margin-top: -0.6rem;
+}
+.two {
+  width: 100%;
+  height: 7.6rem;
+  padding: 0 .7rem;
+  position: relative;
+}
+.two:before {
+  position: absolute;
+  content: "";
+  display: block;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: rgba(0, 0, 0, 0.2);
+}
+@media (-webkit-device-pixel-ratio: 2) {
+  .two:before {
+    transform: scaleY(0.5);
+  }
+}
+@media (-webkit-device-pixel-ratio: 3) {
+  .two:before {
+    transform: scaleY(0.33333333);
+  }
+}
+.two:before {
+  position: absolute;
+  content: "";
+  display: block;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: rgba(0, 0, 0, 0.2);
+}
+@media (-webkit-device-pixel-ratio: 2) {
+  .two:before {
+    transform: scaleY(0.5);
+  }
+}
+@media (-webkit-device-pixel-ratio: 3) {
+  .two:before {
+    transform: scaleY(0.33333333);
+  }
+}
+.two img {
+  padding: .98rem .2rem;
+  width: 100%;
+  display: block;
+}
+.three {
+  width: 100%;
+  height: 3.9rem;
+  position: relative;
+  pointer-events: none;
+}
+.three:before {
+  position: absolute;
+  content: "";
+  display: block;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: rgba(0, 0, 0, 0.2);
+}
+@media (-webkit-device-pixel-ratio: 2) {
+  .three:before {
+    transform: scaleY(0.5);
+  }
+}
+@media (-webkit-device-pixel-ratio: 3) {
+  .three:before {
+    transform: scaleY(0.33333333);
+  }
+}
+.three img {
+  float: left;
+  height: 2.35rem;
+  width: 2.35rem;
+  margin: 0.76rem 0.7rem;
+  display: block;
+  pointer-events: none;
+}
+.three h3 {
+  line-height: 1.7rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #666;
+  display: inline-block;
+  margin: 1.14rem 0;
+  pointer-events: none;
+}
+.three .right {
+  color: gray;
+  position: absolute;
+  right: 3%;
+  top: 30%;
+  pointer-events: none;
+}
+.four {
+  width: 100%;
+  height: 3.9rem;
+  position: relative;
+}
+.four:before {
+  position: absolute;
+  content: "";
+  display: block;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: rgba(0, 0, 0, 0.2);
+}
+@media (-webkit-device-pixel-ratio: 2) {
+  .four:before {
+    transform: scaleY(0.5);
+  }
+}
+@media (-webkit-device-pixel-ratio: 3) {
+  .four:before {
+    transform: scaleY(0.33333333);
+  }
+}
+.four .fourOne {
+  float: left;
+  width: 50%;
+  height: 3.9rem;
+  position: relative;
+}
+.four .fourOne img {
+  float: left;
+  height: 2.35rem;
+  width: 2.35rem;
+  margin: 0.76rem 0.7rem;
+  display: block;
+}
+.four .fourOne h3 {
+  line-height: 1.7rem;
+  font-size: .75rem;
+  font-weight: 600;
+  color: #666;
+  display: inline-block;
+  margin: 1.14rem 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  width: 54%;
+}
+.four .fourOne .right {
+  color: gray;
+  position: absolute;
+  right: 6%;
+  top: 30%;
+  width: 1rem;
+  height: 1rem;
+}
+.four .fourTwo {
+  float: right;
+  width: 50%;
+  height: 3.9rem;
+  position: relative;
+}
+.four .fourTwo:after {
+  position: absolute;
+  content: "";
+  display: block;
+  right: 0;
+  width: 100%;
+  height: 1px;
+  background: rgba(0, 0, 0, 0.2);
+}
+@media (-webkit-device-pixel-ratio: 2) {
+  .four .fourTwo:after {
+    transform: scaleY(0.5);
+  }
+}
+@media (-webkit-device-pixel-ratio: 3) {
+  .four .fourTwo:after {
+    transform: scaleY(0.33333333);
+  }
+}
+.four .fourTwo img {
+  float: left;
+  height: 2.35rem;
+  width: 2.35rem;
+  margin: 0.76rem 0.7rem;
+  display: block;
+}
+.four .fourTwo h3 {
+  line-height: 1.7rem;
+  font-size: .75rem;
+  font-weight: 600;
+  color: #666;
+  display: inline-block;
+  margin: 1.14rem 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  width: 54%;
+}
+.four .fourTwo .right {
+  color: gray;
+  position: absolute;
+  right: 10%;
+  top: 30%;
+  width: 1rem;
+  height: 1rem;
+}
+.five {
+  width: 100%;
+  height: 19.7rem;
+  position: relative;
+  padding: 0 .8rem;
+}
+.five:before {
+  position: absolute;
+  content: "";
+  display: block;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: rgba(0, 0, 0, 0.2);
+}
+@media (-webkit-device-pixel-ratio: 2) {
+  .five:before {
+    transform: scaleY(0.5);
+  }
+}
+@media (-webkit-device-pixel-ratio: 3) {
+  .five:before {
+    transform: scaleY(0.33333333);
+  }
+}
+.five .listOne {
+  float: left;
+  width: 100%;
+  height: 50%;
+}
+.five .listOne .fiveOne {
+  width: 30%;
+  height: 40%;
+  float: left;
+  position: absolute;
+  top: .8rem;
+}
+.five .listOne .fiveOne .First {
+  width: 99%;
+  height: 88.6%;
+  position: relative;
+  border-radius: .2rem;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+.five .listOne .fiveOne .First img {
+  width: 63.5%;
+  height: 63.4%;
+  position: absolute;
+  left: 20%;
+  top: 20%;
+}
+.five .listOne .fiveOne span {
+  width: 100%;
+  height: 10%;
+  display: block;
+  margin: .35rem 0 .85rem;
+  font-size: .4rem;
+  font-weight: 700;
+  line-height: 1.2;
+  text-align: center;
+  color: #666;
+  overflow: hidden;
+}
+.five .listOne .fiveTwo {
+  width: 30%;
+  height: 40%;
+  position: absolute;
+  float: left;
+  left: 34.9%;
+  top: .8rem;
+}
+.five .listOne .fiveTwo .Two {
+  width: 100%;
+  height: 90%;
+  border-radius: .2rem;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+.five .listOne .fiveTwo .Two img {
+  width: 57%;
+  height: 55%;
+  position: absolute;
+  left: 22%;
+  top: 18%;
+}
+.five .listOne .fiveTwo span {
+  width: 100%;
+  height: 10%;
+  display: block;
+  margin: .35rem 0 .85rem;
+  font-size: .4rem;
+  font-weight: 700;
+  line-height: 1.2;
+  text-align: center;
+  color: #666;
+  overflow: hidden;
+}
+.five .listOne .fiveThree {
+  width: 30%;
+  height: 40%;
+  float: left;
+  right: .8rem;
+  position: absolute;
+  top: .8rem;
+}
+.five .listOne .fiveThree .Three {
+  width: 100%;
+  height: 90%;
+  border-radius: .2rem;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+.five .listOne .fiveThree .Three img {
+  width: 57%;
+  height: 55%;
+  position: absolute;
+  left: 22%;
+  top: 18%;
+}
+.five .listOne .fiveThree span {
+  width: 100%;
+  height: 10%;
+  display: block;
+  margin: .35rem 0 .85rem;
+  font-size: .4rem;
+  font-weight: 700;
+  line-height: 1.2;
+  text-align: center;
+  color: #666;
+  overflow: hidden;
+}
+.five .listTwo {
+  float: right;
+  width: 100%;
+  height: 50%;
+}
+.five .listTwo .fiveOne {
+  width: 30%;
+  height: 40%;
+  float: left;
+  position: absolute;
+  top: 50%;
+}
+.five .listTwo .fiveOne .Four {
+  width: 99%;
+  height: 88.6%;
+  position: relative;
+  border-radius: .2rem;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+.five .listTwo .fiveOne .Four img {
+  width: 60%;
+  height: 60%;
+  position: absolute;
+  left: 20%;
+  top: 20%;
+}
+.five .listTwo .fiveOne span {
+  width: 100%;
+  height: 10%;
+  display: block;
+  margin: .35rem 0 .85rem;
+  font-size: .4rem;
+  font-weight: 700;
+  line-height: 1.2;
+  text-align: center;
+  color: #666;
+  overflow: hidden;
+}
+.five .listTwo .fiveTwo {
+  width: 30%;
+  height: 40%;
+  position: absolute;
+  float: left;
+  left: 34.9%;
+  top: 50%;
+}
+.five .listTwo .fiveTwo .Five {
+  width: 100%;
+  height: 90%;
+  border-radius: .2rem;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+.five .listTwo .fiveTwo .Five img {
+  width: 57%;
+  height: 55%;
+  position: absolute;
+  left: 22%;
+  top: 18%;
+}
+.five .listTwo .fiveTwo span {
+  width: 100%;
+  height: 10%;
+  display: block;
+  margin: .35rem 0 .85rem;
+  font-size: .4rem;
+  font-weight: 700;
+  line-height: 1.2;
+  text-align: center;
+  color: #666;
+  overflow: hidden;
+}
+.five .listTwo .fiveThree {
+  width: 30%;
+  height: 40%;
+  float: left;
+  right: .8rem;
+  position: absolute;
+  top: 50%;
+}
+.five .listTwo .fiveThree .Six {
+  width: 100%;
+  height: 90%;
+  border-radius: .2rem;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+.five .listTwo .fiveThree .Six img {
+  width: 57%;
+  height: 55%;
+  position: absolute;
+  left: 22%;
+  top: 18%;
+}
+.five .listTwo .fiveThree span {
+  width: 100%;
+  height: 10%;
+  display: block;
+  margin: .35rem 0 .85rem;
+  font-size: .4rem;
+  font-weight: 700;
+  line-height: 1.2;
+  text-align: center;
+  color: #666;
+  overflow: hidden;
+}

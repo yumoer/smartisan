@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>用户登录</title>
+		<script src="js/mui.min.js"></script>
+		<link rel="shortcut icon" href="chuizir.png" type="image/png" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link href="css/reset.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="css/index.css" />
+	</head>
+
+	<body style="background: url(image/myCenter/bg.jpg) repeat">
+		<div class="mui-off-canvas-wrap mui-draggable">
+			<!-- 主页面容器 -->
+			<div class="mui-inner-wrap">
+				<!-- 主页面标题 -->
+				<header class="mui-bar mui-bar-nav">
+					<sapn class="mui-title" style="color: white; font-weight: bold; font-size: 18px; margin-top: 0.3rem;">登录官网</sapn>
+				</header>
+				<div class="mui-content mui-scroll-wrapper">
+					<div class="mui-scroll" id="inputWrap">
+						<form class="mui-input-group">
+							<div class="mui-input-row">
+								<!-- <label>用户名</label>-->
+								<input type="text" class="mui-input-clear submit" placeholder="手机号/邮箱">
+							</div>
+							<div class="mui-input-row">
+								<!-- <label>密码</label>-->
+								<input type="password" class="mui-input-password submit" placeholder="密码">
+							</div>
+
+						</form>
+						<div class="checkedWrapL">
+							<div class="checked" id="checked"></div>
+							<div class="textL">自动登录</div>
+						</div>
+						<div class="checkedWrapR">
+							<div class="zhuce">注册</div>
+							<div class="wjma">忘记密码</div>
+						</div>
+
+							<button type="button" class="denglu">登录</button>
+
+						<div class="sjdl">国际手机号登陆 &gt;</div>
+
+					</div>
+				</div>
+				<div class="bottomWrap">
+					<div class="weibo"></div>
+					<div class="qq"></div>
+				</div>
+			</div>
+		</div>
+
+		<!--mTab 底部选项卡-->
+		<nav class="mui-bar mui-bar-tab">
+			<a href="index.html" class="mui-tab-item tiaozhuan" id="index">
+				<span class="mui-icon mui-icon-home"></span>
+				<span class="mui-tab-label">首页</span>
+			</a>
+			<a href="page.html" class="mui-tab-item tiaozhuan">
+				<span class="mui-icon mui-icon-list"></span>
+				<span class="mui-tab-label">分类</span>
+			</a>
+			<a href="shop.html" class="mui-tab-item tiaozhuan">
+				<span class="mui-icon mui-icon-locked"></span>
+				<span class="mui-tab-label">购物车</span>
+			</a>
+			<a href="myCenter.html" class="mui-tab-item tiaozhuan mui-active">
+				<span class="mui-icon mui-icon-contact"></span>
+				<span class="mui-tab-label">个人中心</span>
+			</a>
+		</nav>
+	</body>
+
+	<script type="text/javascript" src="js/Jason.js"></script>
+	<script type="text/javascript" src="js/myCenter.js"></script>
+	<script type="text/javascript" charset="utf-8">
+		mui.init();
+	</script>
+
+</html>
